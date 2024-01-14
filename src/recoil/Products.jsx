@@ -13,3 +13,17 @@ export const DynamicProducts=atom(
         default:[]
     }
 )
+
+export const DynamicDescription=atom(
+    {
+        key:"DynamicDescription",
+        default:""
+    }
+)
+
+export const SearchValues=atom(
+    {
+        key:"SearchValues",
+        default:""
+    }
+)

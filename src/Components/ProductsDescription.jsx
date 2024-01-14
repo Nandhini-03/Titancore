@@ -1,9 +1,31 @@
 // import React from 'react'
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import productAPI from '../API/Products'
+import { useRecoilState } from 'recoil';
+import { DynamicDescription } from '../recoil/Products';
+
 const ProductsDescription = () => {
     const location =useLocation();
     console.log(location)
-    console.log(location.state)
+    console.log("location",location.state)
+
+    const [productDescription,setProductDescription] = useRecoilState(DynamicDescription)
+    useEffect(()=>
+    {
+        const fetchData=async() =>
+        {
+            try{
+                const response=await productAPI.getDynamicDescription(location.state.productId)
+                setProductDescription(response)
+            }
+            catch(error)
+            {
+                console.log(error)
+            }
+        }
+        fetchData()
+    })
 
   return (
     <div>
@@ -21,7 +43,7 @@ const ProductsDescription = () => {
                     </div>
                     <div>
                         <h2>Description</h2>
-                        <p>{location.state.productDescription}</p>
+                        <p>{location.state.productDescription ? location.state.productDescription : productDescription}</p>
                     </div>
                 </div>
             </div>
