@@ -1,9 +1,14 @@
 import { Component } from "react";
 import Slider from "react-slick";
-import Products from "./Products";
+// import Products from "./Products";
+import ProductCards from "./ProductCards";
 
 export default class Responsive extends Component {
   render() {
+
+    const { Data } = this.props;
+    console.log("Slider data",Data)
+
     var settings = {
       dots: true,
       infinite: false,
@@ -42,31 +47,14 @@ export default class Responsive extends Component {
       <div>
         <h2> Responsive </h2>
         <Slider {...settings}>
-            <Products />
-          {/* <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div> */}
+          {
+            Data &&
+            Data.map(item =>
+              {
+                console.log("slider item",item),
+                <ProductCards item={item}/>
+              })
+          }
         </Slider>
       </div>
     );

@@ -15,7 +15,8 @@ const [dynamicData,setDynamicData] = useRecoilState(DynamicProducts)
         try
         {
           const response=await ProductAPI.getTrendProducts()
-          setDynamicData(response.data)
+          console.log("dynamic",response)
+          setDynamicData(response)
           // console.log(response)
         }
         catch(error)

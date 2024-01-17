@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <div style={{position:"absolute",backgroundColor:"rgba(56, 69, 90, 0.5)",width:"100%"}}>
         <div style={{margin:"0 50px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <div style={{display:"flex"}}>Spotify</div>
+            <div style={{display:"flex",fontSize:"20px",fontWeight:"500"}}>Flipkart</div>
             <div style={{backgroundColor:"white",borderRadius:"10px",height:"25px",width:"50%",display:"flex",alignItems:"center"}}>
               <input 
                 placeholder="Search"

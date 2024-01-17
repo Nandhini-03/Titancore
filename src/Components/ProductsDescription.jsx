@@ -7,7 +7,7 @@ import { DynamicDescription } from '../recoil/Products';
 
 const ProductsDescription = () => {
     const location =useLocation();
-    console.log(location)
+    // console.log(location)
     console.log("location",location.state)
 
     const [productDescription,setProductDescription] = useRecoilState(DynamicDescription)
@@ -25,7 +25,10 @@ const ProductsDescription = () => {
             }
         }
         fetchData()
-    })
+    },[])
+
+    // console.log("Image",location.state.productImg)
+    console.log("product description",productDescription)
 
   return (
     <div>
@@ -33,7 +36,7 @@ const ProductsDescription = () => {
             <div style={{margin:"0 30px",display:"flex"}}>
                 <div style={{display:"flex",alignItems:"center",justifyContent:"center",paddingTop:"20px"}}>
                     <div style={{maxWidth:"400px",maxHeight:"500px",overflow:"hidden",marginRight:"30px",borderRadius:"10px"}}>
-                        <img style={{width:"100%",objectFit:"cover",height:"100%"}} src={location.state.productImg}/>
+                        <img style={{width:"100%",objectFit:"cover",height:"50%"}} src={`data:image/jpeg;base64,${location.state.productImg}`}/>
                     </div>
                 </div>
                 <div style={{margin:"30px"}}>

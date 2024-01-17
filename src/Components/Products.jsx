@@ -5,13 +5,14 @@ import ProductAPI from '../API/Products'
 import ProductCards from './ProductCards';
 import { ProductsState } from '../recoil/Products';
 import { useRecoilState } from 'recoil';
+// import Slider from './Slider'
 
 const Products = () => {
   const [staticData,setStaticDatas] = useRecoilState(ProductsState)
   // const [staticData,setStaticDatas] = useState([])
   
 
- console.log("data",staticData)
+
 
   useEffect(() =>
   {
@@ -20,8 +21,9 @@ const Products = () => {
       try
       {
         const response=await ProductAPI.getStaticProducts()
-        // console.log(response.data)
-        setStaticDatas(response.data)
+        console.log("static",response)
+        setStaticDatas(response)
+        
       }
       catch(error)
       {
@@ -29,13 +31,17 @@ const Products = () => {
       }
     }
     fetchData();
+    console.log("test",staticData);
   },[])
-  // console.log("StaticData",staticData)
 
+
+
+  
 
   return (
     <div>
       <h2>Products</h2>
+      {/* <Slider Data={staticData}/> */}
       <ProductCards Data={staticData}/>
     </div>
   )
